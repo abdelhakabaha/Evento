@@ -23,9 +23,8 @@ return new class extends Migration
             $table->text('description');
             $table->date('date');
             $table->string('lieu');
-            $table->string('idcategorie');
             $table->integer('nbPlace');
-            $table->integer('isValide');
+            $table->integer('isValide')->default(false);
             $table->timestamps();
         });
         

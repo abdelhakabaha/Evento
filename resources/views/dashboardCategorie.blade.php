@@ -284,11 +284,36 @@ rel="stylesheet"
           
       </tbody>
     </table>
+    <a href="{{ route('Admin.creatCategorie') }}"  class="ml-20 px-5 py-2 bg-blue-500 text-white rounded hover:bg-blue-600 focus:bg-blue-600">Ajouter</a>
   </div>
 </div>
 </div>
          
   </body>
   </html>
+
+
+  {{-- la forme pour crée une nauveau event  mais pas cmplaite  --}}
+
+    @if (session('status'))
+    <div class="alert alert-success ">
+        {{ session('status') }}
+    @endif
+    @foreach(serrors->all() as $error)
+       {{ $error }} 
+    @endforeach
+
+
+<h1>Ajouté catégorie</h1>
+<form action="/ajouterCat" method="post">
+    @csrf
+    
+    <label for="name">name</label>   
+    <input type="name" id="name" name="name">
+
+
+    <a href="/Ajouter" class="btn btn-primary">Ajouter Catégorie</a>
+
+</form>
 
 

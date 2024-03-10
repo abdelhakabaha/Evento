@@ -37,7 +37,7 @@
                 </div>
             </div>
             <div class="flex flex-col md:flex-row hidden md:block -mx-2">
-                <a href="wellcom.bled.php" class="text-gray-800 rounded hover:bg-gray-900 hover:text-gray-100 hover:font-medium py-2 px-2 md:mx-2">Home</a>
+                <a href="welcome.bled.php" class="text-gray-800 rounded hover:bg-gray-900 hover:text-gray-100 hover:font-medium py-2 px-2 md:mx-2">Home</a>
                 <a href="#" class="text-gray-800 rounded hover:bg-gray-900 hover:text-gray-100 hover:font-medium py-2 px-2 md:mx-2">About</a>
                 @if (Route::has('login'))
                 @auth
@@ -72,6 +72,54 @@
     </div>
 </div>
 
+
+
+<!-- component -->
+
+<div class="flex  min-h-screen bg-white">
+    <div class="col-span-12">
+      <div class="overflow-auto lg:overflow-visible">
+        <div class="flex lg:justify-between border-b-2 border-fuchsia-900 pb-1">
+          <h2 class="text-2xl text-gray-500 font-bold">Les evenement</h2>
+          <div class="text-center flex-auto">
+            <input
+              type="text"
+              name="name"
+              placeholder="Search..."
+              class=" w-1/3 py-2 border-b-2 border-blue-600 outline-none focus:border-yellow-400 "/>
+          </div>
+    
+    
+        </div>
+        <table class="table text-gray-400 border-separate space-y-6 text-sm">
+          <thead class="bg-blue-500 text-white">
+            <tr>
+    
+    
+    
+    <!-- component -->
+    <!-- le cadre de l'evenement -->
+    <div class="md:flex shadow-lg  mx-6 md:mx-auto my-40 max-w-lg md:max-w-2xl h-64">
+      <img class="h-full w-full md:w-1/3  object-cover rounded-lg rounded-r-none pb-5/6" src="https://ik.imagekit.io/q5edmtudmz/FB_IMG_15658659197157667_wOd8n5yFyXI.jpg" alt="bag">
+      <div class="w-full md:w-2/3 px-4 py-4 bg-white rounded-lg">
+         <div class="flex items-center">
+            <h2 class="text-xl text-gray-800 font-medium mr-auto">Your Travel Buddy</h2>
+            <p class="text-gray-800 font-semibold tracking-tighter">
+               only
+               <i class="text-gray-600 line-through">60$</i>
+               48$
+            </p>
+         </div>
+         <p class="text-sm text-gray-700 mt-4">
+            Lorem, ipsum dolor sit amet consectetur Amet veritatis ipsam reiciendis numquam tempore commodi ipsa suscipit laboriosam, sit earum at sequ adipisicing elit. Amet veritatis ipsam reiciendis numquam tempore commodi ipsa suscipit laboriosam, sit earum at sequi.
+         </p>
+         <div class="flex items-center justify-end mt-4 top-auto">
+            <button class="bg-white text-red-500 px-4 py-2 rounded mr-auto hover:underline">Delete</button>
+            <button class=" bg-gray-200 text-blue-600 px-2 py-2 rounded-md mr-2">Edit</button>
+            <button class=" bg-blue-600 text-gray-200 px-2 py-2 rounded-md ">Publish</button>
+         </div>
+      </div>
+    </div>
 
 
  <!-- component -->
@@ -113,15 +161,7 @@
         </div>
       </div>
       <div>
-        <img src="https://images.unsplash.com/photo-1497493292307-31c376b6e479?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1171&q=80" alt="">
-        <div>
-          <h1  class="mt-3 text-gray-800 text-2xl font-bold my-2">long established</h1>
-          <p class="text-gray-700 mb-2">It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that....</p>
-          <div class="flex justify-between mt-4">
-            <span class="font-thin text-sm">May 20th 2020</span>
-            <span class="mb-2 text-gray-800 font-bold">Réserver</span>
-          </div>
-        </div>
+
       </div>
     </div>
     <div></div>
@@ -264,12 +304,6 @@
             </div>
         </section>
 
-
-
-
-       
-        
-
-
+   
     </body>
 </html>
