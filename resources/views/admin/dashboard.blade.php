@@ -6,7 +6,7 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <script src="https://cdn.tailwindcss.com"></script>
 
-    <title>Document</title>
+    <title>Dachbord admin</title>
 </head>
 <body>
     <!-- component -->
@@ -290,9 +290,6 @@
                                        <button class="bg-red-500 text-white rounded p-3">supprimer</button>
                                    </form>
                                 </td>
-
-                                
-                            
                                 <td>
                                    <form action="{{ route('category.edit',$category) }}"  >
                                     @csrf
@@ -394,7 +391,7 @@
                                    <td>
                                     <form action="{{ route('event.edit',$event) }}"  >
                                      @csrf
-                                        <button class="bg-red-500 text-white rounded p-3">modifier</button>
+                                        <button class="bg-blue-500 text-white rounded p-3">modifier</button>
                                     </form>
                                  </td> 
                                   
@@ -408,85 +405,68 @@
                        
                           
                           
-                              <!--- more free and premium Tailwind CSS components at https://tailwinduikit.com/ --->
-                                          
-                              <div class="px-4 md:px-10 py-4 md:py-7">
-                                              <div class="flex items-center justify-between">
-                                                  <p tabindex="0" class="focus:outline-none text-base sm:text-lg md:text-xl lg:text-2xl font-bold leading-normal text-gray-800">User</p>
-                                              
-                                              </div>
-                                          </div>
-                                           <div class="bg-white py-4 md:py-7 px-4 md:px-8 xl:px-10"> 
-                       
-                                              @if (session()->has('success'))
-                                              <div class="bg-green-100 border-l-4 border-green-500 text-green-700 p-4" role="alert">
-                                                  <p class="font-bold">Success!</p>
-                                                  <p>{{ session()->get('success') }}</p>
-                                              </div>
-                              
-                                              @endif
-                                              <div class="mt-7 overflow-x-auto">
-                                                  <table class="w-full whitespace-nowrap">
-                                                      <thead>
-                                                          <tr>
-                                                              <td>Id</td>
-                                                              <td>Name</td>
-                                                              <td>Email</td>
-                                                              <td>Password</td>                                   
-                                                              <td>Roule</td>
-                                                              <td>action</td>
-                                                          </tr>
-                                                      </thead>
-                                                      <tbody>
+                            <!--- more free and premium Tailwind CSS components at https:/tailwinduikit.com/ --->
+                                        
+    <div class="px-4 md:px-10 py-4 md:py-7">
+        <div class="flex items-center justify-between">
+          <p tabindex="0" class="focus:outline-none text-basesm:text-lg md:text-xl lg:text-2xl font-boldleading-normal text-gray-800">User</p>                            
+        </div>
+    </div>
+    <div class="bg-white py-4 md:py-7 px-4 md:px-8 xl:px-10">                       
+      @if (session()->has('success'))
+        <div class="bg-green-100 border-l-4 border-green-500text-green-700 p-4" role="alert">
+          <p class="font-bold">Success!</p>
+          <p>{{ session()->get('success') }}</p>
+        </div>                            
+          @endif
+      <div class="mt-7 overflow-x-auto">
+          <table class="w-full whitespace-nowrap">
+              <thead>
+                  <tr>
+                      <td>Id</td>
+                      <td>Name</td>
+                      <td>Email</td>                                   
+                      <td>Roule</td>
+                      <td>action</td>
+                  </tr>
+              </thead>
+              <tbody>
+                <tbody>
+                  @foreach ($users as $user )                                       
+               <tr tabindex="0" class="focus:outline-none h-16border border-gray-100 rounded">
+                  <td>
+                    {{ $user->id }}
+                  </td>
+                  <td>
+                    {{ $user->name}}
+                  </td>
+                  <td>
+                    {{ $user->email}}
+                  </td>
 
 
-
-
-
-{{-- 
-                                <style>.checkbox:checked + .check-icon {
-                                    display: flex;
-                                  } --}}
+                  <td>
+                    {{ $user->roule }}
+                  </td>                        
+                  <td>
+                    <form action="{{ route('user.delete',$user) }}" method="post" >
+                      @method('delete')
+                      @csrf
+                         <button class="bg-red-500 text-whiterounded p-3">supprimer</button>
+                   </form>
+                  </td>
+               </tr>               
+              @endforeach 
+            </tbody>
+     
+                        
+{{--
+                              <style>.checkbox:checked + .check-icon {
+                                  display: flex;
+                                } --}}
 
 
 </style>
-        <script>function dropdownFunction(element) {
-                var dropdowns = document.getElementsByClassName("dropdown-content");
-                var i;
-                let list = element.parentElement.parentElement.getElementsByClassName("dropdown-content")[0];
-                list.classList.add("target");
-                for (i = 0; i < dropdowns.length; i++) {
-                    if (!dropdowns[i].classList.contains("target")) {
-                        dropdowns[i].classList.add("hidden");
-                    }
-                }
-                list.classList.toggle("hidden");
-            }</script>
-      </div>
-      <div class="text-blue-gray-600">
-        <footer class="py-2">
-          <div class="flex w-full flex-wrap items-center justify-center gap-6 px-2 md:justify-between">
-            <p class="block antialiased font-sans text-sm leading-normal font-normal text-inherit">© 2023, made with <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true" class="-mt-0.5 inline-block h-3.5 w-3.5">
-                <path d="M11.645 20.91l-.007-.003-.022-.012a15.247 15.247 0 01-.383-.218 25.18 25.18 0 01-4.244-3.17C4.688 15.36 2.25 12.174 2.25 8.25 2.25 5.322 4.714 3 7.688 3A5.5 5.5 0 0112 5.052 5.5 5.5 0 0116.313 3c2.973 0 5.437 2.322 5.437 5.25 0 3.925-2.438 7.111-4.739 9.256a25.175 25.175 0 01-4.244 3.17 15.247 15.247 0 01-.383.219l-.022.012-.007.004-.003.001a.752.752 0 01-.704 0l-.003-.001z"></path>
-              </svg> by <a href="https://www.creative-tim.com" target="_blank" class="transition-colors hover:text-blue-500">Creative Tim</a> for a better web. </p>
-            <ul class="flex items-center gap-4">
-              <li>
-                <a href="https://www.creative-tim.com" target="_blank" class="block antialiased font-sans text-sm leading-normal py-0.5 px-1 font-normal text-inherit transition-colors hover:text-blue-500">Creative Tim</a>
-              </li>
-              <li>
-                <a href="https://www.creative-tim.com/presentation" target="_blank" class="block antialiased font-sans text-sm leading-normal py-0.5 px-1 font-normal text-inherit transition-colors hover:text-blue-500">About Us</a>
-              </li>
-              <li>
-                <a href="https://www.creative-tim.com/blog" target="_blank" class="block antialiased font-sans text-sm leading-normal py-0.5 px-1 font-normal text-inherit transition-colors hover:text-blue-500">Blog</a>
-              </li>
-              <li>
-                <a href="https://www.creative-tim.com/license" target="_blank" class="block antialiased font-sans text-sm leading-normal py-0.5 px-1 font-normal text-inherit transition-colors hover:text-blue-500">License</a>
-              </li>
-            </ul>
-          </div>
-        </footer>
-      </div>
-    </div>
-  </div>
+
 </body>
 </html>

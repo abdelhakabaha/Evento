@@ -1,6 +1,8 @@
 <?php
 
+use App\Models\Event;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\UserController;
 use App\Http\Controllers\EventController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\CategoryController;
@@ -18,23 +20,34 @@ use App\Http\Controllers\DashboardController;
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    $events = Event::all();
+    return view('welcome',compact('events'));
 });
 Route::get('/dashboard', function () {
-    return view('dachbord');
+    return view('dashboard');
 });
-Route::get('/dashboardUser', function () {
-    return view('dashboardUser');
+
+Route::get('/cart/{id}', function ($id) {
+    $event = Event::find($id);
+    dd($event);     
+    return view('cart' ,compact('event'));
 });
-Route::get('/dashboardEvent', function () {
-    return view('dashboardEvent');
-});
-Route::get('/dashboardCategorie', function () {
-    return view('dashboardCategorie');
-});
-Route::get('/dashboardEventAdd', function () {
-    return view('dashboardEventAdd');
-});
+
+
+Route::post("/search", [EventController::class, "search"])->name("event.search");
+// Route::get('/dashboardUser', function () {
+//     return view('dashboardUser');
+// });
+// Route::get('/dashboardEvent', function () {
+//     return view('dashboardEvent');
+// });
+// Route::get('/dashboardCategorie', function () {
+//     return view('dashboardCategorie');
+// });
+// Route::get('/dashboardEventAdd', function () {
+//     return view('dashboardEventAdd');
+// });
+Route::delete("dashboard/{user}/delete", [UserController::class, "destroy"])->name("user.delete");
 
 
 // Route::get('/events/create', [EventController::class , "create"])->name('organisateur.create');
@@ -56,6 +69,9 @@ Route::get('/dashboardEventAdd', function () {
 Route::get('/dashboard', function () {
     return view('dashboard');
 })->middleware(['auth', 'verified'])->name('dashboard');
+Route::get('/organisateurdach', function () {
+    return view('organisateurdach');
+})->middleware(['auth', 'verified'])->name('organisateurdach');
 
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
@@ -69,6 +85,8 @@ require __DIR__.'/auth.php';
 
 
 Route::get('/dashboard',[DashboardController::class, 'index']);
+// Route::get('/creat',[DashboardController::class, 'index']);
+
 
 Route::resource('/category', CategoryController::class);
 Route::resource('/event', EventController::class);

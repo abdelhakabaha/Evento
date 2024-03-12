@@ -24,6 +24,7 @@ class EventController extends Controller
     {
         $categories = Category::all();
         return view('admin.eventCreate', compact('categories'));
+        
     }
 
     /**
@@ -66,14 +67,10 @@ class EventController extends Controller
 
         $event->save();
 
-
-
-
-
-
-
         return redirect()->back()->with('success', 'Événement ajouté avec succès');
     }
+
+
 
     /**
      * Display the specified resource.
@@ -122,5 +119,15 @@ class EventController extends Controller
     {
         $event->delete();
         return redirect()->back()->with(['success' => 'category Deleted Successfully!']);
+    }
+
+    
+    public function search(Request $request)
+    {
+        $query = $request->input('query');
+
+        $events = Event::where('titre', 'like', '%' . $query . '%')->get();
+        // Return the view with the search results
+        return view('welcome',compact('events'));
     }
 }

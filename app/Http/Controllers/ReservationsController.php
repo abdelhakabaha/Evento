@@ -2,10 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Reservation;
+use App\Models\reservations;
 use Illuminate\Http\Request;
 
-class ReservationController extends Controller
+class ReservationsController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -28,13 +28,21 @@ class ReservationController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $reservation = new Reservations();
+        $reservation->event_id = $request->event_id;
+        $reservation->name = $request->name;
+        $reservation->email = $request->email;
+        $reservation->guests = $request->guests;
+        $reservation->save();
+    
+        return redirect()->back()->with('success', 'Réservation effectuée avec succès.');
+    
     }
 
     /**
      * Display the specified resource.
      */
-    public function show(Reservation $reservation)
+    public function show(reservations $reservations)
     {
         //
     }
@@ -42,7 +50,7 @@ class ReservationController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(Reservation $reservation)
+    public function edit(reservations $reservations)
     {
         //
     }
@@ -50,7 +58,7 @@ class ReservationController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, Reservation $reservation)
+    public function update(Request $request, reservations $reservations)
     {
         //
     }
@@ -58,7 +66,7 @@ class ReservationController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(Reservation $reservation)
+    public function destroy(reservations $reservations)
     {
         //
     }
